@@ -2,6 +2,9 @@ package csc402.week6;
 
 class BinarySearchTree {
     TreeNode root;
+    int size_right = 0;
+    int size_left = 0;
+    int size_total = 0;
 
     BinarySearchTree() {
         root = null;
@@ -14,12 +17,15 @@ class BinarySearchTree {
     TreeNode insertRec(TreeNode root, int value) {
         if (root == null) {
             root = new TreeNode(value);
+            size_total++;
             return root;
         }
 
         if (value < root.value) {
+            size_left++;
             root.left = insertRec(root.left, value);
         } else if (value > root.value) {
+            size_right++;
             root.right = insertRec(root.right, value);
         }
 
